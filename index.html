@@ -100,7 +100,9 @@ mensaje.textContent = '¡Gracias por visitar mi portafolio! 👋';
 document.getElementById('sobre-mi').appendChild(btnMensaje);
 document.getElementById('sobre-mi').appendChild(mensaje);
 
-
+btnMensaje.addEventListener('click', () => {
+  mensaje.style.display = mensaje.style.display === 'none' ? 'block' : 'none';
+});
 
 
   
