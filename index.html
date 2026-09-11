@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mi Portafolio</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Arial, sans-serif; }
+  
+  /* TODO: personaliza estos colores */
+  header { background: #070282; color: rgb(244, 232, 232); padding: 60px 20px; text-align: center; }
+  header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+  header p { font-size: 1.2rem; opacity: 0.8; }
+  
+  nav { background: #4f4ca5; padding: 15px; text-align: center; }
+  nav a { color: white; margin: 0 15px; text-decoration: none; }
+  
+  section { padding: 50px 20px; max-width: 800px; margin: 0 auto; }
+  section h2 { margin-bottom: 20px; color: #110f0f; }
+  
+  .proyecto { background: #f4f4f4; padding: 20px; border-radius: 8px; margin-bottom: 15px; }
+  
+  footer { background: #070282; color: white; text-align: center; padding: 20px; }
+body.dark-mode { background: #121212; color: #f4f4f4; }
+body.dark-mode .proyecto { background: #1e1e1e; color: #f4f4f4; }
+body.dark-mode header h1, body.dark-mode section h2 { color: #f4f4f4; }
+</style>
+</head>
+<body>
+
+  <header>
+    <h1> Esteban Garcia Capera</h1>
+    <p>Aprendiz de ADSO</p>
+  </header>
+
+  <nav>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <section id="sobre-mi">
+    <h2>Sobre mí</h2>
+    <p>Me llamo Esteban Garcia Capera y soy un aprendiz de ADSO. Estudio programación y me interesa crear soluciones innovadoras con código.</p>
+  </section>
+
+  <section id="proyectos">
+    <h2>Mis Proyectos</h2>
+    
+    <div class="proyecto">
+      <h3>Bot de ventas</h3>
+      <p>Un bot de ventas paraorganizar datos de varias sucursales.</p>
+    </div>
+
+    <div class="proyecto">
+      <h3>Portafolio Web</h3>
+      <p>Una pagina web para mostrar mis proyectos y habilidades.</p>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p>garciacaperaesteban@gmail.com</p>
+  </section>
+
+  <footer>
+    <p>Esteban Garcia Capera - 2026</p>
+  </footer>
+
+  <script>
+    // ===== MODO OSCURO =====
+const toggleBtn = document.createElement('button');
+toggleBtn.textContent = '🌙';
+toggleBtn.id = 'darkModeToggle';
+toggleBtn.style.cssText = 'position:fixed; top:15px; right:15px; padding:8px 12px; border:none; border-radius:50%; cursor:pointer; font-size:1.2rem; z-index:1000;';
+document.body.appendChild(toggleBtn);
+
+if (localStorage.getItem('modoOscuro') === 'activado') {
+  document.body.classList.add('dark-mode');
+  toggleBtn.textContent = '☀️';
+}
+
+toggleBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  const activado = document.body.classList.contains('dark-mode');
+  toggleBtn.textContent = activado ? '☀️' : '🌙';
+  localStorage.setItem('modoOscuro', activado ? 'activado' : 'desactivado');
+});
+// ===== MENSAJE AL HACER CLIC EN UN BOTÓN =====
+const btnMensaje = document.createElement('button');
+btnMensaje.textContent = 'Saludar';
+btnMensaje.style.cssText = 'display:block; margin:20px auto; padding:10px 20px; border:none; border-radius:6px; background:#3f8059; color:white; font-size:1rem; cursor:pointer;';
+
+const mensaje = document.createElement('p');
+mensaje.id = 'mensajeSaludo';
+mensaje.style.cssText = 'text-align:center; margin-top:10px; font-weight:bold; color:#324f2a; display:none;';
+mensaje.textContent = '¡Gracias por visitar mi portafolio! 👋';
+
+// Los agrega dentro de la sección "sobre-mi", puedes cambiar el id si prefieres otra
+document.getElementById('sobre-mi').appendChild(btnMensaje);
+document.getElementById('sobre-mi').appendChild(mensaje);
+
+btnMensaje.addEventListener('click', () => {
+  mensaje.style.display = mensaje.style.display === 'none' ? 'block' : 'none';
+});
+
+
+  
+
+  </script>
+
+</body>
+</html>  
